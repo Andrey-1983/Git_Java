@@ -8,6 +8,7 @@ class Task_152
 
     static boolean[][] mx = new boolean[100][100];
     static boolean[] b = new boolean[100];
+    static boolean[] log = new boolean[100];
 
     public static void main(String[] args)
     {
@@ -23,7 +24,8 @@ class Task_152
         }
         for (int a = 0; a < n; ++a)
         {
-            Search(a, n);
+            if(!log[a])
+                Search(a, n);
         }
         System.out.println("Yes");
     }
@@ -33,16 +35,20 @@ class Task_152
         b[a] = true;
         for (int i = 0; i < n; ++i)
         {
-            if (!mx[a][i])
+            if(mx[a][i])
             {
-                continue;
+                if (b[i])
+                {
+                    System.out.println("No");
+                    System.exit(0);
+                }
+                if (!log[i])
+                {
+                    Search(i, n);
+                }
             }
-            if (b[i]) {
-                System.out.println("No");
-                System.exit(0);
-            }
-            Search(i, n);
         }
         b[a] = false;
+        log[a] = true;
     }
 }
