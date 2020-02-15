@@ -5,7 +5,6 @@ import java.util.Scanner;
 class Task_152
 {
     static final Scanner sc = new Scanner(System.in);
-
     static boolean[][] mx = new boolean[100][100];
     static boolean[] b = new boolean[100];
     static boolean[] log = new boolean[100];
