@@ -1,24 +1,25 @@
 package ru.acmp;
-
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Task_804 {
-    static Scanner in = new Scanner(System.in);
+    static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
     static int[][] mx = new int[1000][1000];
     static int[][] map = new int[1000000][2];
 
-    public static void main(String[] args) {
-        int n = in.nextInt();
-        int m = in.nextInt();
-        in.nextLine();
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(in.readLine());
+        int n = sc.nextInt();
+        int m = sc.nextInt();
 
         int tigerX = 0;
         int tigerY = 0;
         for (int x = 0; x < n; ++x) {
-            String line = in.nextLine();
             for (int y = 0; y < m; ++y) {
-                switch (line.charAt(y)) {
+                switch (in.read()) {
                     case '.':
                         mx[x][y] = 0;
                         break;
@@ -28,6 +29,9 @@ public class Task_804 {
                     case 'T':
                         tigerX = x;
                         tigerY = y;
+                        break;
+                    default:
+                        --y;
                         break;
                 }
             }
